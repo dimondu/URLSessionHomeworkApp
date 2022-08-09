@@ -9,9 +9,9 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let city = "Moscow"
+    private let city = "Moscow"
     
-    var weatherURL: String {
+    private var weatherURL: String {
         "https://goweather.herokuapp.com/weather/\(city)"
     }
     
