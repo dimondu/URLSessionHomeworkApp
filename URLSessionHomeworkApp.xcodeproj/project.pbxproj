@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F464CA0428A5258200BBCA54 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F464CA0328A5258200BBCA54 /* NetworkManager.swift */; };
 		F47F4FB528A14E440087D116 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F4FB428A14E440087D116 /* AppDelegate.swift */; };
 		F47F4FB728A14E440087D116 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F4FB628A14E440087D116 /* SceneDelegate.swift */; };
 		F47F4FB928A14E440087D116 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F4FB828A14E440087D116 /* MainViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F464CA0328A5258200BBCA54 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F47F4FB128A14E440087D116 /* URLSessionHomeworkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLSessionHomeworkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47F4FB428A14E440087D116 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F47F4FB628A14E440087D116 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F464C9FE28A518C900BBCA54 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F47F4FC828A14E6B0087D116 /* Weather.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F464C9FF28A518D300BBCA54 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F47F4FB428A14E440087D116 /* AppDelegate.swift */,
+				F47F4FB628A14E440087D116 /* SceneDelegate.swift */,
+				F47F4FC228A14E460087D116 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F464CA0028A518EF00BBCA54 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F47F4FBA28A14E440087D116 /* Main.storyboard */,
+				F47F4FBF28A14E460087D116 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F464CA0128A518FF00BBCA54 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F47F4FB828A14E440087D116 /* MainViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F464CA0228A5191900BBCA54 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F47F4FBD28A14E460087D116 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F464CA0528A5258700BBCA54 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F464CA0328A5258200BBCA54 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		F47F4FA828A14E440087D116 = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +111,12 @@
 		F47F4FB328A14E440087D116 /* URLSessionHomeworkApp */ = {
 			isa = PBXGroup;
 			children = (
-				F47F4FB428A14E440087D116 /* AppDelegate.swift */,
-				F47F4FC828A14E6B0087D116 /* Weather.swift */,
-				F47F4FB628A14E440087D116 /* SceneDelegate.swift */,
-				F47F4FB828A14E440087D116 /* MainViewController.swift */,
-				F47F4FBA28A14E440087D116 /* Main.storyboard */,
-				F47F4FBD28A14E460087D116 /* Assets.xcassets */,
-				F47F4FBF28A14E460087D116 /* LaunchScreen.storyboard */,
-				F47F4FC228A14E460087D116 /* Info.plist */,
+				F464C9FE28A518C900BBCA54 /* Models */,
+				F464CA0528A5258700BBCA54 /* Services */,
+				F464CA0128A518FF00BBCA54 /* ViewControllers */,
+				F464CA0028A518EF00BBCA54 /* Storyboards */,
+				F464CA0228A5191900BBCA54 /* Resources */,
+				F464C9FF28A518D300BBCA54 /* App */,
 			);
 			path = URLSessionHomeworkApp;
 			sourceTree = "<group>";
@@ -143,6 +194,7 @@
 			files = (
 				F47F4FB928A14E440087D116 /* MainViewController.swift in Sources */,
 				F47F4FB528A14E440087D116 /* AppDelegate.swift in Sources */,
+				F464CA0428A5258200BBCA54 /* NetworkManager.swift in Sources */,
 				F47F4FC928A14E6B0087D116 /* Weather.swift in Sources */,
 				F47F4FB728A14E440087D116 /* SceneDelegate.swift in Sources */,
 			);
@@ -293,7 +345,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5QX49B9H53;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = URLSessionHomeworkApp/Info.plist;
+				INFOPLIST_FILE = URLSessionHomeworkApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -321,7 +373,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5QX49B9H53;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = URLSessionHomeworkApp/Info.plist;
+				INFOPLIST_FILE = URLSessionHomeworkApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
