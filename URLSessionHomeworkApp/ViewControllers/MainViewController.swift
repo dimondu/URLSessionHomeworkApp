@@ -8,12 +8,14 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    @IBOutlet weak var temperatureTodayLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
-    private let city = "Moscow"
+    @IBOutlet weak var windLabel: UILabel!
+    @IBOutlet weak var forecastFirstDayLabel: UILabel!
     
-    private var weatherURL: String {
-        "https://goweather.herokuapp.com/weather/\(city)"
-    }
+    @IBOutlet weak var forecastSecondDayLabel: UILabel!
+    @IBOutlet weak var forecastThirdDayLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,22 +24,40 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController {
+    
     private func fetchWeather() {
-        guard let url = URL(string: weatherURL) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
+        NetworkManager.shared.fetchWeather(from: NetworkManager.shared.weatherURL) { [weak self] result in
+            switch result {
+            case .success(let weather):
+                self?.temperatureTodayLabel.text = "\(weather.temperature)"
+                self?.descriptionLabel.text = "\(weather.description)"
+                self?.windLabel.text = "Скорость ветра: \(weather.wind)"
+                
+                for weather in weather.forecast {
+                    if weather.day == "1"{
+                        self?.forecastFirstDayLabel.text = """
+                            Через \(weather.day) день
+                            Температура: \(weather.temperature)
+                            Скорость ветра: \(weather.wind)
+                            """
+                    }else if weather.day == "2" {
+                        self?.forecastSecondDayLabel.text = """
+                            Через \(weather.day) дня
+                            Температура: \(weather.temperature)
+                            Скорость ветра: \(weather.wind)
+                            """
+                    }else {
+                        self?.forecastThirdDayLabel.text = """
+                            Через \(weather.day) дня
+                            Температура: \(weather.temperature)
+                            Скорость ветра: \(weather.wind)
+                            """
+                    }
+                }
+            case .failure(let error):
+                print(error)
             }
-            
-            do {
-                let weather = try JSONDecoder().decode(Weather.self, from: data)
-                print(weather)
-            } catch {
-                print(error.localizedDescription)
-            }
-        }.resume()
+        }
     }
 }
 
