@@ -14,19 +14,13 @@ enum NetworkError: Error {
 }
 
 class NetworkManager {
-    
-    var weatherURL: String {
-        "https://goweather.herokuapp.com/weather/\(city)"
-    }
-    
-    private let city = "Moscow"
-    
+
     static let shared = NetworkManager()
 
     private init() {}
 
     func fetchWeather(from url: String?, completion: @escaping(Result<Weather, NetworkError>) -> Void) {
-        guard let url = URL(string: weatherURL) else {
+        guard let stringURL = url, let url = URL(string: stringURL) else {
             completion(.failure(.invalidURL))
             return
         }
@@ -34,6 +28,7 @@ class NetworkManager {
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
                 completion(.failure(.noData))
+                print(error?.localizedDescription ?? "No error description")
                 return
             }
             

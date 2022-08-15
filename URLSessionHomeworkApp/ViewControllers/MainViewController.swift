@@ -17,6 +17,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var forecastSecondDayLabel: UILabel!
     @IBOutlet weak var forecastThirdDayLabel: UILabel!
     
+    private var activityIndicator = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchWeather()
@@ -26,7 +28,7 @@ class MainViewController: UIViewController {
 extension MainViewController {
     
     private func fetchWeather() {
-        NetworkManager.shared.fetchWeather(from: NetworkManager.shared.weatherURL) { [weak self] result in
+        NetworkManager.shared.fetchWeather(from: WeatherUrl.weatherURL.rawValue) { [weak self] result in
             switch result {
             case .success(let weather):
                 self?.temperatureTodayLabel.text = "\(weather.temperature)"
@@ -55,7 +57,7 @@ extension MainViewController {
                     }
                 }
             case .failure(let error):
-                print(error)
+                print(error.localizedDescription)
             }
         }
     }
