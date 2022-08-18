@@ -28,38 +28,39 @@ class MainViewController: UIViewController {
 extension MainViewController {
     
     private func fetchWeather() {
-        NetworkManager.shared.fetchWeather(from: WeatherUrl.weatherURL.rawValue) { [weak self] result in
+        NetworkManager.shared.fetchWeather(from: Link.weatherURL.rawValue) { [weak self] result in
             switch result {
             case .success(let weather):
                 self?.temperatureTodayLabel.text = "\(weather.temperature)"
                 self?.descriptionLabel.text = "\(weather.description)"
                 self?.windLabel.text = "Скорость ветра: \(weather.wind)"
-                
-                for weather in weather.forecast {
+                for weather in weather.forecast{
                     if weather.day == "1"{
                         self?.forecastFirstDayLabel.text = """
-                            Через \(weather.day) день
-                            Температура: \(weather.temperature)
-                            Скорость ветра: \(weather.wind)
-                            """
+                                                        Через \(weather.day) день
+                                                        Температура: \(weather.temperature)
+                                                        Скорость ветра: \(weather.wind)
+                                                        """
                     }else if weather.day == "2" {
                         self?.forecastSecondDayLabel.text = """
-                            Через \(weather.day) дня
-                            Температура: \(weather.temperature)
-                            Скорость ветра: \(weather.wind)
-                            """
+                                                        Через \(weather.day) дня
+                                                        Температура: \(weather.temperature)
+                                                        Скорость ветра: \(weather.wind)
+                                                        """
                     }else {
                         self?.forecastThirdDayLabel.text = """
-                            Через \(weather.day) дня
-                            Температура: \(weather.temperature)
-                            Скорость ветра: \(weather.wind)
-                            """
+                                                        Через \(weather.day) дня
+                                                        Температура: \(weather.temperature)
+                                                        Скорость ветра: \(weather.wind)
+                                                        """
                     }
                 }
+                
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
 }
+
 
